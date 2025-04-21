@@ -22,7 +22,7 @@ app.post("/api/register", async (req, res) => {
     await db.collection("users").doc(userRecord.uid).set({
       name,
       email,
-      role: "Ciudadano",
+      role: role || "Ciudadano", // Usa el role del body o un valor por defecto
     });
 
     res.status(200).json({ message: "Usuario registrado correctamente" });
